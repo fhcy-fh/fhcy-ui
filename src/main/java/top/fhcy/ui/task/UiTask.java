@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import top.fhcy.biz.MemoryEnWordBiz;
 import top.fhcy.entity.MemoryEnWord;
 import top.fhcy.ui.SwingJFrame;
+import top.fhcy.ui.component.MessageDialog;
 
 import javax.annotation.Resource;
 import javax.swing.*;
@@ -19,14 +20,12 @@ public class UiTask {
     @Resource
     private MemoryEnWordBiz memoryEnWordBiz;
 
-    @Scheduled(cron ="0 0/5 * * * ?")
+    @Scheduled(cron ="0 0/3 * * * ?")
 //    @Scheduled(cron ="*/5 * * * * ?")
     public void test() {
         MemoryEnWord enWord = memoryEnWordBiz.getEnWord();
         SwingJFrame jFrame = SwingJFrame.getInstance();
-        Frame frame = new Frame();
-        frame.setAlwaysOnTop(true);
-        JOptionPane.showMessageDialog(frame, enWord.getEnWord(), "FHCY", JOptionPane.PLAIN_MESSAGE);
+        MessageDialog.show(enWord.getEnWord(), enWord.getDescription());
         jFrame.setExtendedState(JFrame.NORMAL);
     }
 }
