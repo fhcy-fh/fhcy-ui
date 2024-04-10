@@ -9,7 +9,6 @@ import top.fhcy.ui.component.MessageDialog;
 
 import javax.annotation.Resource;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @author fenghao

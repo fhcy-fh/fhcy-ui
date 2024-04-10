@@ -6,6 +6,7 @@ import top.fhcy.mapper.MemoryEnWordMapper;
 import top.fhcy.service.MemoryEnWordService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author fenghao
@@ -15,6 +16,11 @@ public class MemoryEnWordServiceImpl implements MemoryEnWordService {
 
     @Resource
     private MemoryEnWordMapper memoryEnWordMapper;
+
+    @Override
+    public List<MemoryEnWord> listAll() {
+        return memoryEnWordMapper.selectList(null);
+    }
 
     @Override
     public MemoryEnWord getById(Long id) {
