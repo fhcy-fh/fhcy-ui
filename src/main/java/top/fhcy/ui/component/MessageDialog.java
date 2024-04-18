@@ -16,7 +16,7 @@ public class MessageDialog {
         frame.setFont(new Font("宋体",Font.BOLD,100));
         frame.setAlwaysOnTop(true);
         frame.setResizable(false);
-        JOptionPane.showMessageDialog(frame, title + " : " + description, FHCY, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(frame, title + "\n" + description, FHCY, JOptionPane.PLAIN_MESSAGE);
     }
 
 }

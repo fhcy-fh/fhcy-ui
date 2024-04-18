@@ -2,7 +2,8 @@ package top.fhcy.ui.task;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import top.fhcy.biz.MemoryEnWordBiz;
+import top.fhcy.biz.MemoryBiz;
+import top.fhcy.entity.Memory;
 import top.fhcy.entity.MemoryEnWord;
 import top.fhcy.ui.SwingJFrame;
 import top.fhcy.ui.component.MessageDialog;
@@ -17,14 +18,14 @@ import javax.swing.*;
 public class UiTask {
 
     @Resource
-    private MemoryEnWordBiz memoryEnWordBiz;
+    private MemoryBiz memoryBiz;
 
-    @Scheduled(cron ="0 0/3 * * * ?")
+    @Scheduled(cron ="0 0/2 * * * ?")
 //    @Scheduled(cron ="*/5 * * * * ?")
     public void test() {
-        MemoryEnWord enWord = memoryEnWordBiz.getEnWord();
+        Memory memory = memoryBiz.get();
         SwingJFrame jFrame = SwingJFrame.getInstance();
-        MessageDialog.show(enWord.getEnWord(), enWord.getDescription());
+        MessageDialog.show(memory.getTitle(), memory.getDescription());
         jFrame.setExtendedState(JFrame.NORMAL);
     }
 }

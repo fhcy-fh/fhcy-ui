@@ -22,6 +22,16 @@ public class MemoryServiceImpl implements MemoryService {
     private MemoryMapper memoryMapper;
 
     @Override
+    public Memory getById(Long id) {
+        return memoryMapper.selectById(id);
+    }
+
+    @Override
+    public Long countAll() {
+        return memoryMapper.selectCount(null);
+    }
+
+    @Override
     public void save(String title, String description) {
         if (StringUtils.isBlank(title)) {
             return;
